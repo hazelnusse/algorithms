@@ -1,5 +1,5 @@
-Stacks & queues
-===============
+Stacks & Queues & Deques
+========================
 element removed by delete operation is prespecified: stack deletes the most
 recently inserted (LIFO), queue deletes the element in the set for the longest
 time (FIFO)
@@ -19,5 +19,14 @@ size N and add some boolean flags that indicate whether the queue is empty or
 full.  It is marginally less time efficient but more space efficient (by 1
 element) this way, so it might be good if the items in the queue are really
 large. The implementation requires that the template type T implements a copy
-assignment operator and that this operator frees any resources.
+assignment operator and that this operator frees any resources.  An additional
+implementation using the approach outlined in the book is implemented in
+queue_alternate.h
+
+Deque
+-----
+This was implemented to complete exercise 10-1.5. It provides constant time
+insertion and deletion from front or back and is implemented using a fixed size
+array of size N+1, where N is the number of elements the deque can hold (i.e.,
+one element is wasted as in the implementation of queue_alternate.h).
 

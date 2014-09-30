@@ -61,7 +61,9 @@ for a C++ implementation which uses a size N+1 array for a size N queue.
 
 Exercise 10.1-5
 ---------------
-TODO
+See `deque.h` and `test_deque.h` for a C++ implementation which uses a size N+1
+array for a size N queue. The deque supports enqueue_front, enqueue_back,
+dequeue_front and dequeue_back, all of which are O(1) complexity.
 
 Exercise 10.1-6
 ---------------
