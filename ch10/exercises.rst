@@ -55,7 +55,9 @@ DEQUEUE(Q)
 
 Exercise 10.1-4
 ---------------
-See `queue.h` and `test_queue.h` for a C++ implementation.
+See `queue.h` and `test_queue.h` for a C++ implementation which uses a size N
+array for a size N queue. See `queue_alternate.h` and `test_queue_alternate.h`
+for a C++ implementation which uses a size N+1 array for a size N queue.
 
 Exercise 10.1-5
 ---------------

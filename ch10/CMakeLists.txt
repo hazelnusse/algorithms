@@ -8,3 +8,7 @@ add_executable(test_queue test_queue.cc)
 target_link_libraries(test_queue ${GTEST_BOTH_LIBRARIES})
 add_test(Test_queue test_queue)
 
+add_executable(test_queue_alternate test_queue_alternate.cc)
+target_link_libraries(test_queue_alternate ${GTEST_BOTH_LIBRARIES})
+add_test(Test_queue_alternate test_queue_alternate)
+
