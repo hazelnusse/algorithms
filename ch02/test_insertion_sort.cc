@@ -21,10 +21,10 @@ public:
 };
 
 TEST_F(Test_insertion_sort, SortArray) {
+    auto ar_copy = ar;
     insertion_sort(ar.begin(), ar.end());
-    auto std_sorted = ar;
-    std::sort(ar.begin(), ar.end());
-    ASSERT_EQ(std_sorted, ar);
+    std::sort(ar_copy.begin(), ar_copy.end());
+    ASSERT_EQ(ar_copy, ar);
 }
 
 TEST_F(Test_insertion_sort, Exercise2_1_1) {
@@ -33,4 +33,14 @@ TEST_F(Test_insertion_sort, Exercise2_1_1) {
         insertion_sort(a.begin(), it);
         print(a);
     }
+}
+
+TEST_F(Test_insertion_sort, ReverseSortArray) {
+    using comp = std::greater<decltype(ar)::value_type>;
+    auto ar_copy = ar;
+    insertion_sort(ar.begin(), ar.end(), comp());
+    print(ar);
+    std::sort(ar_copy.begin(), ar_copy.end(), comp());
+    print(ar_copy);
+    ASSERT_EQ(ar_copy, ar);
 }
