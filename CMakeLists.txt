@@ -17,5 +17,7 @@ endif()
 find_package(GTest REQUIRED)
 enable_testing()
 
+add_subdirectory(ch02)
 add_subdirectory(ch10)
+add_subdirectory(ch12)
 
