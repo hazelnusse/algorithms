@@ -8,3 +8,7 @@ add_executable(test_linear_search test_linear_search.cc)
 target_link_libraries(test_linear_search ${GTEST_BOTH_LIBRARIES})
 add_test(Test_linear_search test_linear_search)
 
+add_executable(test_sum_n_bit_binary_integers test_sum_n_bit_binary_integers.cc)
+target_link_libraries(test_sum_n_bit_binary_integers ${GTEST_BOTH_LIBRARIES})
+add_test(Test_sum_n_bit_binary_integers test_sum_n_bit_binary_integers)
+
