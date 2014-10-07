@@ -12,3 +12,7 @@ add_executable(test_sum_n_bit_binary_integers test_sum_n_bit_binary_integers.cc)
 target_link_libraries(test_sum_n_bit_binary_integers ${GTEST_BOTH_LIBRARIES})
 add_test(Test_sum_n_bit_binary_integers test_sum_n_bit_binary_integers)
 
+add_executable(test_selection_sort test_selection_sort.cc)
+target_link_libraries(test_selection_sort ${GTEST_BOTH_LIBRARIES})
+add_test(Test_selection_sort test_selection_sort)
+

@@ -73,17 +73,65 @@ The C++ implementation is in `sum_n_bit_binary_integers.h`.
 
 Exercise 2.2-1
 ==============
-TODO
+n^/1000 - 100n^2 - 100n + 3 is \Sigma(n^3)
+
 
 Exercise 2.2-2
 ==============
-TODO
+Selection sort is implemented in `selection_sort.h`.  The loop is indexed by j,
+starting at j = begin. The loop invariant is::
+
+    At the start of each iteration of the for loop, the subarray A[begin...(j - 1)]
+    consists of the (j-begin) smallest elements of A in sorted order.
+
+Proof:
+Initialization
+--------------
+Prior to the first iteration of the loop, we have j = begin, so that the
+subarray A[begin...(j - 1)] is empty and hence the loop invariant is satisfied.
+
+Maintenance
+-----------
+Each iteration finds the smallest element in the A[j...end-1] subarray and
+swaps it into the j element, thus guaranteeing that the loop invariant holds
+during the next iteration.
+
+Termination
+-----------
+At termination, j = end - 1, hence the subarray A[begin...(j - 1)] =
+A[begin...(end - 2)] consists of the (j - begin) == (end - 1 - begin) smallest
+elements of A in sorted order. This implies that A[end - 2] <= A[end - 1], and
+hence the whole array is also in sorted order.
+
+It only needs to run for the first n - 1 elements because the algorithm will
+swap the (n - 1)'th element with the n'th if the n'th element is the minimum of
+the two.  The best case running time is Sigma(n^2) since the search for the
+minimum traverse the entire subarray, even if it is in sorted order.  The worst
+case running time is also Sigma(n^2).
 
 Exercise 2.2-3
 ==============
-TODO
+The worst-case running time is when the element is not in the list, in which
+case n comparisons are done and the running time is Sigma(n). The best case
+occurs when the element is the first in the list and only 1 comparison is done,
+in which case the running time is Sigma(n^0). For an array with n elements, if
+the element is located at the i-th location, then i comparisons take place. The
+average running time is the average of the running time of all possible
+running times (assuming they are each equally likely)::
+
+    average = (1 + 2 + 3 + ... + n) / n
+            = sum_{k=1}^{n} k / n           # arithmetic series on numerator
+            = n * (n + 1) / 2 / n
+            = (n + 1) / 2
+
+So the average running time for linear search is (n + 1)/2 which is still
+Sigma(n).
+
 
 Exercise 2.2-4
 ==============
-TODO
+Add a special case that checks if the input matches this special case.  For
+example in any sort algorithm with input size n, you can check if the input is
+sorted in running time O(n), and then the best case performance will be O(n)
+when a sorted input is supplied to the algorithm.
 
