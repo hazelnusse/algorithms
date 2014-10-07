@@ -2,16 +2,16 @@
 #define LINEAR_SEARCH
 
 template <class Iterator>
-Iterator linear_search(Iterator first, Iterator last,
+Iterator linear_search(Iterator begin, Iterator end,
                        const typename std::iterator_traits<Iterator>::value_type& v)
 {
-    Iterator it;
-    for (it = first; it != last; ++it) {
-        if (*it == v) {
+    Iterator i;
+    for (i = begin; i != end; ++i) {
+        if (*i == v) {
             break;
         }
     }
-    return it;
+    return i;
 }
 
 #endif
