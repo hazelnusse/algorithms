@@ -135,3 +135,74 @@ example in any sort algorithm with input size n, you can check if the input is
 sorted in running time O(n), and then the best case performance will be O(n)
 when a sorted input is supplied to the algorithm.
 
+Exercise 2.3-1
+==============
+
+sorted  A =         [3, 9, 26, 38, 41, 49, 52, 57]
+                        /                     \
+               [3, 26, 41, 52],        [9, 38, 49, 57]
+                 /         \            /          \
+             [3, 41],   [26, 52],   [38, 57],   [9, 49]
+             /    \      /    \      /    \     /    \
+initial A = [3], [41], [52], [26], [38], [57], [9], [49]
+
+Exercise 2.3-2
+==============
+This is implemented using C++ iterators in `merge_sort.h`. Basically, this works
+by having a pointer to one after the last element -- dereferencing this pointer
+is undefined but using it instead of a sentinal value allows smaller copies to
+be made and eliminates the issue of deciding what to use for the sentinal value
+and ensuring that it is never supplied in the input array that is to be sorted.
+
+Exercise 2.3-3
+==============
+Use mathematical induction to show that when n is an exact power of 2, the solu-
+tion of the recurrence
+
+      / 2 if n == 2
+T(n) =|
+      \ 2*T(n/2) + n if n == 2^k, for k > 1
+
+is T(n) = n*log2(n).
+
+Solution
+--------
+We take the base case as n = 2.  By the recurrence relation, T(2) = T(2^1) = 2,
+and 2*log2(2) = 2^1*log2(2^1) = 2, hence T(n) = n*log2(n) satisfies the
+recurrence relation for n = 2.  Suppose T(2^k) = 2^k*log2(2^k) satisfies recurrence
+relation.  Then
+    T(2^(k+1)) = 2*T((2^(k+1))/2) + 2^(k+1)     // by recurrence relation
+               = 2*T(2^k) + 2^(k+1)             // 2^(k+1)/2 = 2^k
+               = 2*2^k*log2(2^k) + 2^(k+1)      // by inductive hypothesis
+               = 2^(k+1)*log2(2^k) + 2^(k+1)    // 2*2^k = 2^(k+1)
+               = 2^(k+1)*(log2(2^k) + 1)        // factor out 2^(k+1)
+               = 2^(k+1)*(log2(2^k) + log2(2))  // 1 = log2(2)
+               = 2^(k+1)*log2(2^(k+1))          // property of logarithms
+
+
+Exercise 2.3-4
+==============
+       / O(1)               if n == 1
+T(n) = |
+       \ T(n - 1) + O(n)    if n > 1
+
+When n == 1, the array A[0] is trivially sorted.  When n > 1, the running time
+is the cost of sorting the subarray A[1...(n-1)] and then inserting the element
+A[n] into that subarray. The insertion will generally involve searching for the
+insertion point, which can be O(lg n) if we use binary search or O(n) for linear
+search, following by shifting all elements to the right of the insertion point.
+The shift operation for a contiguous array is O(n).  If the underyling data
+structure was a linked list instead of an array, the insertion could be done in
+constant time and hence the insertion cost would be O(lg(n)) instead of O(n).
+
+Recursive insertion sort is implemented in `insertion_sort_recursive.h`
+
+Exercise 2.3-5
+==============
+
+Exercise 2.3-6
+==============
+
+Exercise 2.3-7
+==============
+
