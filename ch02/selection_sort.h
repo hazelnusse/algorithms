@@ -1,36 +1,23 @@
-#ifndef INSERTION_SORT_H
-#define INSERTION_SORT_H
+#ifndef SELECTION_SORT_H
+#define SELECTION_SORT_H
 
 #include <functional>
 #include <iterator>
 
-// complexity: O(n), where n = end - begin
-template <typename Iterator>
-Iterator min(Iterator begin, Iterator end) {
-    Iterator min;
-    for (min = begin; begin != end; ++begin) {
-        if (*begin < *min) {
-            min = begin;
+// complexity: O(n^2), where n = end - begin
+template <typename Iterator,
+          typename Compare = std::less<typename std::iterator_traits<Iterator>::value_type>>
+void selection_sort(Iterator begin, Iterator end, Compare comp = Compare())
+{
+    if (std::distance(begin, end) > 1) {
+        Iterator one_before_end = end;
+        --one_before_end;
+        for (Iterator j = begin; j != one_before_end; ++j) {  // c2,         n
+            auto it = std::min_element(j, end, comp);         // max(N-1, 0) comparisons, where N = std::distanc(j, end);
+            std::swap(*it, *j);                               // c3        , n - 1
         }
     }
-    return min;
 }
 
-// complexity: O(n^2), where n = end - begin
-template <typename Iterator>
-void selection_sort(Iterator begin, Iterator end)
-{
-    // Handle bad input:
-    //     end - begin == 1, i.e., one element in container, already sorted
-    //     end - begin <= 0, i.e., invalid container iterators
-    //                                             // cost, times
-    if (end - begin <= 1) {                        // c0, 1
-        return;                                    // c1, 0 or 1
-    }
-
-    for (Iterator j = begin; j != end - 1; ++j) {  // c2,         n
-        auto min_iter = min(j, end);               // O(end - j), n - 1
-        std::swap(*min_iter, *j);                  // c3        , n - 1
-    }
-}
 #endif
+
