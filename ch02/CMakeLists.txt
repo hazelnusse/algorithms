@@ -4,6 +4,10 @@ add_executable(test_insertion_sort test_insertion_sort.cc)
 target_link_libraries(test_insertion_sort ${GTEST_BOTH_LIBRARIES})
 add_test(Test_insertion_sort test_insertion_sort)
 
+add_executable(test_insertion_sort_recursive test_insertion_sort_recursive.cc)
+target_link_libraries(test_insertion_sort_recursive ${GTEST_BOTH_LIBRARIES})
+add_test(Test_insertion_sort_recursive test_insertion_sort_recursive)
+
 add_executable(test_linear_search test_linear_search.cc)
 target_link_libraries(test_linear_search ${GTEST_BOTH_LIBRARIES})
 add_test(Test_linear_search test_linear_search)
@@ -16,3 +20,6 @@ add_executable(test_selection_sort test_selection_sort.cc)
 target_link_libraries(test_selection_sort ${GTEST_BOTH_LIBRARIES})
 add_test(Test_selection_sort test_selection_sort)
 
+add_executable(test_merge_sort test_merge_sort.cc)
+target_link_libraries(test_merge_sort ${GTEST_BOTH_LIBRARIES})
+add_test(Test_merge_sort test_merge_sort)
