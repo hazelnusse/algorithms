@@ -1,17 +1,8 @@
-#include <algorithm>
 #include <bitset>
-#include <iostream>
 
 #include <gtest/gtest.h>
 
 #include "sum_n_bit_binary_integers.h"
-
-template <class Container>
-void print(const Container& c) {
-    std::copy(c.begin(), c.end(),
-            std::ostream_iterator<typename Container::value_type>(std::cout, ", "));
-    std::cout << "\n";
-}
 
 class Test_sum: public ::testing::Test {
 public:
