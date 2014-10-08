@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <iostream>
 
 #include <gtest/gtest.h>
@@ -11,7 +12,7 @@ class Test_binary_search: public ::Test_random_vector {};
 TEST_F(Test_binary_search, FindsElementsInVector) {
     std::sort(v.begin(), v.end());
     for (std::size_t i = 0; i != v.size(); ++i) {
-        auto result = binary_search(begin(v), end(v), v[i]);
+        auto result = alg::binary_search(begin(v), end(v), v[i]);
         if (result == end(v)) {
             ASSERT_FALSE(std::binary_search(begin(v), end(v), v[i])); // STL binary search
         } else {
@@ -25,7 +26,7 @@ TEST_F(Test_binary_search, FindsElementsInReverseVector) {
     using comp = std::greater<decltype(v)::value_type>;
     std::sort(v.begin(), v.end(), comp());
     for (std::size_t i = 0; i != v.size(); ++i) {
-        auto result = binary_search(begin(v), end(v), v[i], comp());
+        auto result = alg::binary_search(begin(v), end(v), v[i], comp());
         if (result == end(v)) {
             ASSERT_FALSE(std::binary_search(begin(v), end(v), v[i], comp())); // STL binary search
         } else {
@@ -33,5 +34,12 @@ TEST_F(Test_binary_search, FindsElementsInReverseVector) {
             ASSERT_EQ(v[i], *result);   // values compare equal
         }
     }
+    ASSERT_EQ(end(v), alg::binary_search(begin(v), end(v), v[0]+1, comp()));
+}
+
+TEST_F(Test_binary_search, FindsElementInLengthOneArray) {
+    std::array<int, 1> ar{1};
+    ASSERT_EQ(begin(ar), alg::binary_search(begin(ar), end(ar), ar[0]));
+    ASSERT_EQ(end(ar), alg::binary_search(begin(ar), end(ar), 5));
 }
 
