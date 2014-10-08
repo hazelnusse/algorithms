@@ -1,30 +1,23 @@
 #include <algorithm>
 #include <array>
-#include <iostream>
 
 #include <gtest/gtest.h>
 
 #include "insertion_sort.h"
+#include "print.h"
+#include "random_vector_test.h"
 
-template <class Container>
-void print(const Container& c) {
-    std::copy(c.begin(), c.end(),
-            std::ostream_iterator<typename Container::value_type>(std::cout, ", "));
-    std::cout << "\n";
-}
-
-class Test_insertion_sort: public ::testing::Test {
-public:
-    std::array<int, 5> ar;
-    Test_insertion_sort() : ar{5, 2, 3, 1, 4} {
-    }
-};
+class Test_insertion_sort: public ::Test_random_vector {};
 
 TEST_F(Test_insertion_sort, SortArray) {
-    auto ar_copy = ar;
-    insertion_sort(ar.begin(), ar.end());
-    std::sort(ar_copy.begin(), ar_copy.end());
-    ASSERT_EQ(ar_copy, ar);
+    insertion_sort(v.begin(), v.end());
+    ASSERT_TRUE(std::is_sorted(v.begin(), v.end()));
+}
+
+TEST_F(Test_insertion_sort, ReverseSortArray) {
+    using comp = std::greater<decltype(v)::value_type>;
+    insertion_sort(v.begin(), v.end(), comp());
+    ASSERT_TRUE(std::is_sorted(v.begin(), v.end(), comp()));
 }
 
 TEST_F(Test_insertion_sort, Exercise2_1_1) {
@@ -35,12 +28,3 @@ TEST_F(Test_insertion_sort, Exercise2_1_1) {
     }
 }
 
-TEST_F(Test_insertion_sort, ReverseSortArray) {
-    using comp = std::greater<decltype(ar)::value_type>;
-    auto ar_copy = ar;
-    insertion_sort(ar.begin(), ar.end(), comp());
-    print(ar);
-    std::sort(ar_copy.begin(), ar_copy.end(), comp());
-    print(ar_copy);
-    ASSERT_EQ(ar_copy, ar);
-}
