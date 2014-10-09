@@ -199,6 +199,15 @@ Recursive insertion sort is implemented in `insertion_sort_recursive.h`
 
 Exercise 2.3-5
 ==============
+A recursive binary search is implemented in `binary_search.h`. The worst case
+running time is O(lg n) because at most lg n recursive calls will be made and
+each call has running time of a constant plus the cost of at most a *single*
+recursive call.  The key difference between this and something like merge sort
+is that at each level of the recursion tree, there is only a single recursive
+call, i.e, the problem is not divided into a subproblems of size n/b.  Of
+course, this only works because the input is assumed to be sorted.
+
+A non recursive binary search is implemented in `binary_search_non_recursive.h`.
 
 Exercise 2.3-6
 ==============

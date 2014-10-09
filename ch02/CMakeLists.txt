@@ -28,3 +28,7 @@ add_executable(test_binary_search test_binary_search.cc)
 target_link_libraries(test_binary_search ${GTEST_BOTH_LIBRARIES})
 add_test(Test_binary_search test_binary_search)
 
+add_executable(test_binary_search_non_recursive test_binary_search_non_recursive.cc)
+target_link_libraries(test_binary_search_non_recursive ${GTEST_BOTH_LIBRARIES})
+add_test(Test_binary_search_non_recursive test_binary_search_non_recursive)
+
