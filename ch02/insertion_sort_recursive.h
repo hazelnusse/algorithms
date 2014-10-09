@@ -4,6 +4,7 @@
 #include <functional>
 #include <iterator>
 
+namespace alg {
 
 // assumptions:
 // 1) [begin, end) is sorted
@@ -32,6 +33,8 @@ void insertion_sort_recursive(Iterator begin, Iterator end, Compare comp = Compa
         insert_end_in_sorted_position(begin, end, comp);
     }
 }
+
+} // namespace alg
 
 #endif
 

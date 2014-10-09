@@ -8,13 +8,13 @@
 class Test_insertion_sort_recursive: public ::Test_random_vector {};
 
 TEST_F(Test_insertion_sort_recursive, SortArray) {
-    insertion_sort_recursive(v.begin(), v.end());
-    ASSERT_TRUE(std::is_sorted(v.begin(), v.end()));
+    alg::insertion_sort_recursive(begin(v), end(v));
+    ASSERT_TRUE(std::is_sorted(begin(v), end(v)));
 }
 
 TEST_F(Test_insertion_sort_recursive, ReverseSortArray) {
     using comp = std::greater<decltype(v)::value_type>;
-    insertion_sort_recursive(v.begin(), v.end(), comp());
-    ASSERT_TRUE(std::is_sorted(v.begin(), v.end(), comp()));
+    alg::insertion_sort_recursive(begin(v), end(v), comp());
+    ASSERT_TRUE(std::is_sorted(begin(v), end(v), comp()));
 }
 
