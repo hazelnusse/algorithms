@@ -4,6 +4,8 @@
 #include <functional>
 #include <iterator>
 
+namespace alg {
+
 template <typename Iterator, typename Compare = std::less<typename std::iterator_traits<Iterator>::value_type>>
 void insertion_sort(Iterator first, Iterator last, Compare comp = Compare())
 {
@@ -24,4 +26,8 @@ void insertion_sort(Iterator first, Iterator last, Compare comp = Compare())
         *(i + 1) = key;
     }
 }
+
+} // namespace alg
+
 #endif
+
