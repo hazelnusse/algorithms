@@ -1,6 +1,8 @@
 #ifndef LINEAR_SEARCH
 #define LINEAR_SEARCH
 
+namespace alg {
+
 template <class Iterator>
 Iterator linear_search(Iterator begin, Iterator end,
                        const typename std::iterator_traits<Iterator>::value_type& v)
@@ -13,6 +15,8 @@ Iterator linear_search(Iterator begin, Iterator end,
     }
     return i;
 }
+
+} // namespace alg
 
 #endif
 
