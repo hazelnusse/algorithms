@@ -211,6 +211,14 @@ A non recursive binary search is implemented in `binary_search_non_recursive.h`.
 
 Exercise 2.3-6
 ==============
+A binary search would improve the complexity somewhat but it wouldn't remove the
+main issue, which is that shifting the elements to permit the insertion is O(n).
+If a doubly linked list were used instead of an array, then the insertion would
+be constant time but the binary search would not be order lg n because it doubly
+linked lists are not random access and would require iterating through each
+element to get to the mid point.  So regardless of whether binary search or
+linear search is used, or whether the data is stored in a random access
+container or a doubly linked list, the complexity remains O(n^2).
 
 Exercise 2.3-7
 ==============
