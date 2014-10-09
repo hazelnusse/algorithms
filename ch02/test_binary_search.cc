@@ -41,5 +41,6 @@ TEST_F(Test_binary_search, FindsElementInLengthOneArray) {
     std::array<int, 1> ar{1};
     ASSERT_EQ(begin(ar), alg::binary_search(begin(ar), end(ar), ar[0]));
     ASSERT_EQ(end(ar), alg::binary_search(begin(ar), end(ar), 5));
+    ASSERT_EQ(end(ar), alg::binary_search(begin(ar), end(ar), 0));
 }
 
