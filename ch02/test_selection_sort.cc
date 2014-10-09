@@ -9,20 +9,20 @@
 class Test_selection_sort: public ::Test_random_vector {};
 
 TEST_F(Test_selection_sort, SortArray) {
-    selection_sort(v.begin(), v.end());
-    ASSERT_TRUE(std::is_sorted(v.begin(), v.end()));
+    alg::selection_sort(begin(v), end(v));
+    ASSERT_TRUE(std::is_sorted(begin(v), end(v)));
 }
 
 TEST_F(Test_selection_sort, ReverseSortArray) {
     using comp = std::greater<decltype(v)::value_type>;
-    selection_sort(v.begin(), v.end(), comp());
-    ASSERT_TRUE(std::is_sorted(v.begin(), v.end(), comp()));
+    alg::selection_sort(begin(v), end(v), comp());
+    ASSERT_TRUE(std::is_sorted(begin(v), end(v), comp()));
 }
 
 
 TEST_F(Test_selection_sort, Exercise2_1_1) {
     std::array<int, 6> a{31, 41, 59, 26, 41, 58};
-    selection_sort(a.begin(), a.end());
-    ASSERT_TRUE(std::is_sorted(a.begin(), a.end()));
+    alg::selection_sort(begin(a), end(a));
+    ASSERT_TRUE(std::is_sorted(begin(a), end(a)));
 }
 

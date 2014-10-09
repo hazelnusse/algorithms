@@ -4,6 +4,8 @@
 #include <functional>
 #include <iterator>
 
+namespace alg {
+
 // complexity: O(n^2), where n = end - begin
 template <typename Iterator,
           typename Compare = std::less<typename std::iterator_traits<Iterator>::value_type>>
@@ -18,6 +20,8 @@ void selection_sort(Iterator begin, Iterator end, Compare comp = Compare())
         }
     }
 }
+
+} // namespace alg
 
 #endif
 
