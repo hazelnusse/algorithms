@@ -5,6 +5,8 @@
 #include <iterator>
 #include <vector>
 
+namespace alg {
+
 // Assumptions:
 // begin <= middle < end
 template <typename Iterator, typename Compare = std::less<typename std::iterator_traits<Iterator>::value_type>>
@@ -41,5 +43,7 @@ void merge_sort(Iterator begin, Iterator end, Compare comp = Compare())
         merge(begin, mid, end, comp);
     }
 }
+
+} // namespace alg
 
 #endif
