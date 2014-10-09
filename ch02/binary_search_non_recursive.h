@@ -20,28 +20,19 @@ Iterator binary_search_non_recursive(Iterator begin,
                                      U const& value,
                                      Compare comp = Compare())
 {
-    Iterator mid = begin;
-    auto N = std::distance(begin, end);
-    std::advance(mid, N / 2);
-    Iterator left = begin, right = end;
-    while (N > 1) {
-        if (value == *mid) {
+    const Iterator not_found = end--;
+    while (std::distance(begin, end) >= 0) {
+        Iterator mid = begin;
+        std::advance(mid, std::distance(begin, end) / 2);
+        if (*mid == value) {
             return mid;
+        } else if (comp(value, *mid)) {
+            end = --mid;
         } else {
-            if (comp(value, *mid)) {
-                right = mid;
-            } else {
-                left = mid;
-            }
-            N = std::distance(left, right);
-            mid = left;
-            std::advance(mid, N / 2);
+            begin = ++mid;
         }
     }
-    if (value == *mid) {
-        return mid;
-    }
-    return end;
+    return not_found;
 }
 
 } // namespace alg

@@ -40,6 +40,7 @@ TEST_F(Test_binary_search_non_recursive, FindsElementsInReverseVector) {
 TEST_F(Test_binary_search_non_recursive, FindsElementInLengthOneArray) {
     std::array<int, 1> ar{1};
     ASSERT_EQ(begin(ar), alg::binary_search_non_recursive(begin(ar), end(ar), ar[0]));
+    ASSERT_EQ(end(ar), alg::binary_search_non_recursive(begin(ar), end(ar), 0));
     ASSERT_EQ(end(ar), alg::binary_search_non_recursive(begin(ar), end(ar), 5));
 }
 
