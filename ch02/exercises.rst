@@ -222,4 +222,8 @@ container or a doubly linked list, the complexity remains O(n^2).
 
 Exercise 2.3-7
 ==============
-
+An O(n*log2(n)) algorithm is implemented in `find_ints_that_sum_to_x.h`. The
+approach is to first sort the set of integers (O(n*log2(n))), then to iterate
+(O(n)) over the sorted set and perform a binary search (O(log2(n))) on the whole
+set for elements for which equal x - elem. The result is O(2*n*log2(n)) =
+O(n*log2(n)).
