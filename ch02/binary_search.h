@@ -20,26 +20,24 @@ Iterator binary_search(Iterator begin,
                        U const& value,
                        Compare comp = Compare())
 {
-    auto N = std::distance(begin, end);
-    if (N > 1) {
+    const Iterator not_found = end;
+    if (std::distance(begin, end) > 0) {
         Iterator mid = begin;
         std::advance(mid, std::distance(begin, end) / 2);
         if (value == *mid) {                // value is at midpoint
-            return mid;
+            return mid;                     // end recursion
         } else if (comp(value, *mid)) {     // value < *mid
-            Iterator result = alg::binary_search(begin, mid, value, comp);
-            if (result == mid) { // didn't find value in [begin, mid)
-                return end;
-            }
-            return result;
+            end = mid;                      // end is one past last element of range to search
         } else {                            // value > *mid
-            return alg::binary_search(mid, end, value, comp);
+            begin = ++mid;                  // begin is one past mid since we know value != mid
         }
-    } else if (N == 1 && value == *begin) {
-        return begin;
-    } else {
-        return end;
+        mid = alg::binary_search(begin, end, value, comp);
+        if (mid == end) {
+            return not_found;
+        }
+        return mid;
     }
+    return not_found;
 }
 
 } // namespace alg
