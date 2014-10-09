@@ -14,12 +14,12 @@ public:
 TEST_F(Test_sum, Sum) {
     a = decltype(a){"10111"};
     b = decltype(b){"10111"};
-    ASSERT_EQ(std::bitset<6>{"101110"}, sum(a, b));
+    ASSERT_EQ(std::bitset<6>{"101110"}, alg::sum(a, b));
     a = decltype(a){"10101"};
     b = decltype(b){"01010"};
-    ASSERT_EQ(std::bitset<6>{"011111"}, sum(a, b));
+    ASSERT_EQ(std::bitset<6>{"011111"}, alg::sum(a, b));
     a = decltype(a){"00000"};
     b = decltype(b){"00000"};
-    ASSERT_EQ(std::bitset<6>{"000000"}, sum(a, b));
+    ASSERT_EQ(std::bitset<6>{"000000"}, alg::sum(a, b));
 }
 
